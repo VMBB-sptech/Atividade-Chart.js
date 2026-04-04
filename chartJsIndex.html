@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade Chart Js</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div style="width: 600px; height: 300px; margin: auto; border-radius: 20px;">
-        <canvas id="meuGrafico"></canvas>
+
+    <h1 class="titulo">  Atividade: Chart.js  </h1>
+    <div class="ContainerCentral">
+        <div class="Graficos">
+            <canvas id="GraficoBarra"></canvas>
+        </div>
+        <div class="Graficos">
+            <canvas id="GraficoLinha"></canvas>
+        </div>
     </div>
+
+    
 </body>
 
 </html>
@@ -17,9 +27,10 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-        const ctx = document.getElementById('meuGrafico');
+        const ctxBarra = document.getElementById('GraficoBarra');
+        const ctxLinha = document.getElementById('GraficoLinha');
 
-        new Chart(ctx, {
+        new Chart(ctxBarra, {
             type: 'bar', 
             data: {
                 labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
@@ -30,6 +41,7 @@
                         backgroundColor: 'rgba(255, 99, 131, 0.8)',
                         borderColor: 'rgba(255, 99, 131, 1)',
                         borderWidth: 1
+                        
                     },
                     {
                         label: 'Umidade Média',
@@ -48,4 +60,34 @@
                 }
             }
         });
-    </script>
+
+        new Chart(ctxLinha, {
+            type: 'line', 
+            data: {
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                datasets: [
+                    {
+                        label: 'Temperatura',
+                        data: [30, 29, 28, 25, 22, 23],
+                        backgroundColor: 'rgba(255, 99, 131, 0.8)',
+                        borderColor: 'rgba(255, 99, 131, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Umidade',
+                        data: [80, 82, 80, 85, 80, 83],
+                        backgroundColor: 'rgba(57, 161, 233, 0.7)',
+                        borderColor: 'rgba(57, 161, 233, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+</script>
